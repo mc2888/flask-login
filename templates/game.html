@@ -8,15 +8,20 @@
 </head>
 <body>
     <div class="game-container">
-        <h2>Ramificazione: {{ path }}</h2>
-        
+        <!-- Ramificazione nell'angolo in alto a destra -->
+        <div class="path">Ramificazione: {{ path }}</div>
+
+        <!-- Card del gioco -->
         <div class="card">
             <img src="{{ url_for('static', filename='images/' + question['image']) }}" alt="Card Image">
+            
+            <!-- Domanda nella parte alta della card -->
             <div class="question">
                 <p>{{ question['question'] }}</p>
             </div>
+
+            <!-- Scelte Sì/No -->
             <div class="choices">
-                <!-- Passiamo l'indice della domanda corrente come parametro -->
                 <a href="{{ url_for('choose', choice=0, current=question_index) }}" class="btn-choice">Sì</a>
                 <a href="{{ url_for('choose', choice=1, current=question_index) }}" class="btn-choice">No</a>
             </div>

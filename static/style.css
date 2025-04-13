@@ -1,3 +1,4 @@
+/* Body e layout generale */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -7,8 +8,82 @@ body {
     height: 100vh;
     margin: 0;
     color: #333;
+    position: relative;
 }
 
+/* Container del gioco */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Card del gioco */
+.card {
+    background: white;
+    width: 400px; /* Card più grande */
+    height: 500px; /* Card più alta */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Immagine della card */
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* Testo della domanda nella parte alta della card */
+.card .question {
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Scelte Sì/No nella parte bassa della card */
+.card .choices {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Bottoni delle scelte */
+.btn-choice {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Effetto hover per i bottoni */
+.btn-choice:hover {
+    transform: scale(1.1);
+}
+
+/* Visualizzazione del percorso di ramificazione nell'angolo in alto a destra */
+.path {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Container per la pagina di login */
 .login-container {
     background-color: white;
     padding: 20px;
@@ -18,6 +93,7 @@ body {
     text-align: center;
 }
 
+/* Form di login */
 .input-group {
     margin-bottom: 15px;
 }
@@ -34,6 +110,7 @@ body {
     border: 1px solid #ccc;
 }
 
+/* Pulsante di login */
 .btn {
     background-color: #007bff;
     color: white;
@@ -43,6 +120,7 @@ body {
     display: inline-block;
 }
 
+/* Link per l'accesso come ospite */
 .guest-link {
     color: #007bff;
     text-decoration: none;
@@ -52,45 +130,7 @@ body {
     text-decoration: underline;
 }
 
-.card {
-    background: white;
-    width: 300px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
-    transition: transform 0.3s ease-in-out;
-    overflow: hidden;
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card .question {
-    padding: 20px;
-}
-
-.card .choices {
-    padding: 10px;
-}
-
-.btn-choice {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin: 10px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.btn-choice:hover {
-    transform: scale(1.1);
-}
-
+/* Messaggio di errore */
 .error {
     color: red;
     margin-top: 10px;
