@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-import random
 
 app = Flask(__name__)
 app.secret_key = "supersegreto"  # Cambialo in produzione!
@@ -29,7 +28,6 @@ game_questions = [
         "choices": ["Sì", "No"],
         "next": [5, 6]
     },
-    # Puoi continuare a definire altre ramificazioni...
 ]
 
 @app.route("/")
@@ -59,28 +57,25 @@ def guest():
 
 @app.route("/game")
 def game():
-    # Impostiamo una sessione per seguire la ramificazione
-    if "guest" not in session:
+    if "guest" not in session and "username" not in session:
         return redirect(url_for("login"))
-    
-    # Ramificazione, partiamo dalla prima domanda
+
+    # Se l'indice della domanda corrente non è passato, iniziamo dalla prima domanda
     current_question = 0
-    return render_template("game.html", question=game_questions[current_question], path="")
+    return render_template("game.html", question=game_questions[current_question], path="", question_index=current_question)
 
 @app.route("/choose/<int:choice>")
 def choose(choice):
-    # Ottieni la prossima domanda in base alla scelta
     current_question = int(request.args.get("current", 0))
     next_question = game_questions[current_question]["next"][choice]
-    
+
     path = session.get('path', '') + f' -> {game_questions[current_question]["choices"][choice]}'
     session['path'] = path
 
-    # Se non ci sono altre domande, termina
     if next_question >= len(game_questions):
         return redirect(url_for("game_over"))
 
-    return render_template("game.html", question=game_questions[next_question], path=path)
+    return render_template("game.html", question=game_questions[next_question], path=path, question_index=next_question)
 
 @app.route("/game_over")
 def game_over():

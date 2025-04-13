@@ -2,22 +2,30 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="login-container">
-        <h2>Login</h2>
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="error">{{ messages[0] }}</div>
-          {% endif %}
-        {% endwith %}
-        <form method="POST">
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Accedi</button>
+        <h1>Accedi al Gioco</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Accedi</button>
         </form>
+        <p>Oppure <a href="{{ url_for('guest') }}" class="guest-link">entra come ospite</a></p>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="error">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
     </div>
 </body>
 </html>

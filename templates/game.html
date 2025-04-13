@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gioco - Scelte</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -15,8 +16,9 @@
                 <p>{{ question['question'] }}</p>
             </div>
             <div class="choices">
-                <a href="{{ url_for('choose', choice=0, current=loop.index0) }}" class="btn-choice">Sì</a>
-                <a href="{{ url_for('choose', choice=1, current=loop.index0) }}" class="btn-choice">No</a>
+                <!-- Passiamo l'indice della domanda corrente come parametro -->
+                <a href="{{ url_for('choose', choice=0, current=question_index) }}" class="btn-choice">Sì</a>
+                <a href="{{ url_for('choose', choice=1, current=question_index) }}" class="btn-choice">No</a>
             </div>
         </div>
     </div>
